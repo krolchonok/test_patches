@@ -1,15 +1,16 @@
 package app.revanced.patches.example
-
 import app.revanced.patcher.data.BytecodeContext
+import app.revanced.patcher.extensions.InstructionExtensions.addInstruction
+import app.revanced.patcher.extensions.InstructionExtensions.addInstructions
+import app.revanced.patcher.extensions.InstructionExtensions.getInstruction
 import app.revanced.patcher.patch.BytecodePatch
 import app.revanced.patcher.patch.annotation.CompatiblePackage
 import app.revanced.patcher.patch.annotation.Patch
-
-import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.formats.Instruction35c
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
-
+import app.revanced.patcher.util.proxy.mutableTypes.MutableMethod
+import app.revanced.patches.tiktok.misc.integrations.IntegrationsPatch
+import app.revanced.patches.tiktok.misc.settings.SettingsPatch
+import app.revanced.patches.tiktok.misc.settings.fingerprints.SettingsStatusLoadFingerprint
+import app.revanced.util.findMutableMethodOf
 @Patch(
     name = "Example Patch",
     description = "This is an example patch to start with.",
